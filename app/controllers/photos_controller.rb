@@ -30,4 +30,19 @@ class PhotosController < ApplicationController
     # Redirect to photo details page
     redirect_to("/photos/#{the_photo.id}")
   end
+
+  def create_comment
+    #Retrieve photo ID
+    the_photo_id = params.fetch("path_id")
+    # Create a new instance in matching photo comment table
+    new_comment = Comment.new
+    # Retrieve user input from params
+    new_comment.photo_id = params.fetch("path_id")
+    new_comment.body = params.fetch("this_comment")
+    new_comment.author_id = params.fetch("this_author_id")
+    # Save
+    new_comment.save
+    # Re-direct to /photos/# URL
+    redirect_to("/photos/#{the_photo_id}")
+  end
 end

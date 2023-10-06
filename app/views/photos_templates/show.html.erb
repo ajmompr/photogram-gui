@@ -61,9 +61,9 @@
 <h3> Add a new comment </h3>
 <form action="/add_comment/<%= @the_photo.id %>" method="post">
   <label for="photo_id_box"> Photo ID </label>
-  <input id="photo_id_box" name="this_photo_id" type="text" value="">
+  <input id="photo_id_box" name="this_photo_id" type="text" value="<%= @the_photo.id %>">
   <label for="author_id_box"> Author ID </label>
-  <input id="author_id_box" name="this_author_id" type="text" value="">
+  <input id="author_id_box" name="this_author_id" type="text" value="Enter your author ID">
   <label for="comment_box"> Comment </label>
   <textarea id="comment_box" name="this_comment" rows="2" placeholder="Enter a comment..."></textarea>
 
