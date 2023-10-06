@@ -15,6 +15,19 @@ class UsersController < ApplicationController
     render({ :template => "user_templates/show"})
   end
 
+  def create_user
+    # Create new User
+    new_user = User.new
+    new_user.username = params.fetch("the_username")
+    # Save
+    new_user.save
+
+    username = new_user.username
+    # Redirect to user details page
+    redirect_to("/users/#{username}")
+    
+  end
+
   def update
     # Retrieve username
     the_username = params.fetch("path_id")
@@ -32,18 +45,5 @@ class UsersController < ApplicationController
     #REdirect
     redirect_to("/users/#{new_username}")
 
-  end
-
-  def create_user
-    # Create new User
-    new_user = User.new
-    new_user.username = params.fetch("the_username")
-    # Save
-    new_user.save
-
-    username = new_user.username
-    # Redirect to user details page
-    render({ :template => "user_templates/show"})
-    
   end
 end
