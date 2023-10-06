@@ -15,6 +15,22 @@ class PhotosController < ApplicationController
     render({ :template => "photos_templates/show"})
   end 
 
+  def create_photo
+    # create new photo instance
+    new_photo = Photo.new
+
+    # add details
+    new_photo.image = params.fetch("the_image")
+    new_photo.caption = params.fetch("the_caption")
+    new_photo.owner_id = params.fetch("the_owner")
+    # save
+    new_photo.save
+    # fetch new photo's id
+    new_photo_id = new_photo.id
+    # redirect to the details page
+    redirect_to("/photos/#{new_photo_id}")
+  end
+
   def update
     # Retrieve photo ID
     the_photo_id = params.fetch("path_id")

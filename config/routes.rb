@@ -8,6 +8,7 @@ Rails.application.routes.draw do
 
   get("/photos", { :controller => "photos", :action => "index"})
   get("/photos/:path_id", { :controller => "photos", :action => "show"})
+  post("/add_photo", { :controller => "photos", :action => "create_photo"})
   post("/modify_photos/:path_id", { :controller => "photos", :action => "update"})
   post("/add_comment/:path_id", { :controller => "photos", :action => "create_comment"})
   get("/delete_photo/:path_id", { :controller => "photos", :action => "destroy"})
