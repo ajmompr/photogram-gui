@@ -45,4 +45,18 @@ class PhotosController < ApplicationController
     # Re-direct to /photos/# URL
     redirect_to("/photos/#{the_photo_id}")
   end
+
+  def destroy
+    # Retrieve the photo ID
+    the_photo_id = params.fetch("path_id")
+    # Search the ID column for matching instance
+    matching_instance = Photo.where( :id => the_photo_id)
+    # Pop out the matching instance
+    the_photo = matching_instance.first
+    # Delete the instance
+    the_photo.destroy
+   
+    # redirect to 
+    redirect_to("/photos")
+  end
 end
